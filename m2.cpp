@@ -1,19 +1,9 @@
 #include <iostream>
+#include "committeeClass.cpp"
 #include <conio.h>
 
 using namespace std;
 // int amount = 100;
-
-class Committee {
-    private:
-    int totalAmount;
-
-    public:
-    Committee() {};
-
-    void paymentDone();
-    void menu();
-};
 
 class Users {
     private:
@@ -24,11 +14,13 @@ class Users {
 
     public:
     Users() {};
+
     void setDetails(string username, string cardNo, int cvv) {
         this->username = username;
         this->cardNo = cardNo;
         this->cvv = cvv;
     }
+
     int getAmount() {
         return amount;
     }
@@ -68,6 +60,37 @@ void Committee:: paymentDone()
     //     // fflush(stdin);
     // }
 }
+
+void Committee:: menu()
+{
+    Users user;
+    char choice;
+    int exit = 0;
+    while (!exit)
+    {
+        cout << "Welcom to Commiittee App:\n";
+        cout << "MENU : \n";
+        cout << "1. Display Profile\n";
+        cout << "2. Exit\n";
+        cout << "Enter your choice: ";
+        cin >> choice;
+
+        switch (choice)
+        {
+        case '1':
+            user.displayProfile();
+            break;
+        case '2':
+            exit = 1;
+            cout << "\t\t\tExiting...\n";
+            break;
+        default:
+            cout << "Invalid choice. Please select again.\n";
+            // break;
+        }
+    }
+}
+
 bool Users:: validateUser(string username, string cardNo, int cvv)
 {
     if (username == "amit" && cardNo == "12345" && cvv == 123)
@@ -180,34 +203,7 @@ void Users:: displayProfile()
     }
 }
 
-void Committee:: menu()
-{
-    Users user;
-    char choice;
-    int exit = 0;
-    while (!exit)
-    {
-        cout << "Menu:\n";
-        cout << "1. Display Profile\n";
-        cout << "2. Exit\n";
-        cout << "Enter your choice: ";
-        cin >> choice;
 
-        switch (choice)
-        {
-        case '1':
-            user.displayProfile();
-            break;
-        case '2':
-            exit = 1;
-            cout << "\t\t\tExiting...\n";
-            break;
-        default:
-            cout << "Invalid choice. Please select again.\n";
-            // break;
-        }
-    }
-}
 
 int main()
 {
